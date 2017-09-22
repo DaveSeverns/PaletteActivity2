@@ -24,6 +24,7 @@ public class MyColorAdapter extends BaseAdapter {
         this.collection = collection;
 
     }
+    // change
 
     @Override
     public int getCount() {
