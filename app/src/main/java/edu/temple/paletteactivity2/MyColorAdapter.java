@@ -40,6 +40,7 @@ public class MyColorAdapter extends BaseAdapter {
         return 0;
     }
 
+    //Overrode this method to send view to adapter view
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         TextView textView = new TextView(ctx);
