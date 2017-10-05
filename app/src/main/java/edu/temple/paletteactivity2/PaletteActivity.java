@@ -30,7 +30,6 @@ public class PaletteActivity extends Activity {
         final ArrayList myList = new ArrayList<String>();
         myList.add("White");
         myList.add("Blue");
-
         myList.add("Red");
         myList.add("Purple");
         myList.add("Green");
