@@ -1,17 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PaletteActivity2</string>
 
     <string-array name="color_array">
-        <item>White</item>
-        <item>Blue</item>
-        <item>Red</item>
-        <item>Purple</item>
-        <item>Green</item>
-        <item>Cyan</item>
-        <item>Yellow</item>
-        <item>Black</item>
+        <item>Blanco</item>
+        <item>Azul</item>
+        <item>Rojo</item>
+        <item>Púrpura</item>
+        <item>Verde</item>
+        <item>Cian</item>
+        <item>Amrillo</item>
+        <item>Negro</item>
         <item>Magenta</item>
-        <item>Olive</item>
+        <item>Aceituna</item>
     </string-array>
 
     <string-array name="parse_color_array">
@@ -26,9 +27,4 @@
         <item>Magenta</item>
         <item>Olive</item>
     </string-array>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
-
-

@@ -1,6 +1,7 @@
 package edu.temple.paletteactivity2;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by davidseverns on 9/21/17.
@@ -17,11 +19,17 @@ public class MyColorAdapter extends BaseAdapter {
 
     Context ctx;
     String[] collection;
+    String[] colors;
+
+    HashMap<String,String> colorTranslator;
 
     //constructor takes in context and data source to adapt
-    public MyColorAdapter(Context ctx, String[] collection){
+    public MyColorAdapter(Context ctx, String[] collection, String[] colors){
+        this.colors = colors;
         this.ctx = ctx;
         this.collection = collection;
+
+
 
     }
     // change
@@ -45,8 +53,11 @@ public class MyColorAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         TextView textView = new TextView(ctx);
-        textView.setText(collection[i].toString());
-        textView.setBackgroundColor(Color.parseColor(collection[i].toString()));
+        Resources colorRes = ctx.getResources();
+
+        textView.setText(collection[i]);
+
+        textView.setBackgroundColor(Color.parseColor(colors[i]));
         textView.setTextSize(28);
         return textView;
     }
