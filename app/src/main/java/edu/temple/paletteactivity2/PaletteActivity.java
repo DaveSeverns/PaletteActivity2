@@ -2,6 +2,7 @@ package edu.temple.paletteactivity2;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -26,18 +27,8 @@ public class PaletteActivity extends Activity {
         final ConstraintLayout myLayout;
         myLayout = (ConstraintLayout)findViewById(R.id.myLayout);
 
-        // data for adapter to collect
-        final ArrayList myList = new ArrayList<String>();
-        myList.add("White");
-        myList.add("Blue");
-        myList.add("Red");
-        myList.add("Purple");
-        myList.add("Green");
-        myList.add("Cyan");
-        myList.add("Yellow");
-        myList.add("Black");
-        myList.add("Magenta");
-        myList.add("Olive");
+        Resources res = this.getResources();
+        final String[] myList = res.getStringArray(R.array.color_array);
         //instantiate my custom adapter
         MyColorAdapter colorAdapter = new MyColorAdapter(this, myList);
 
@@ -51,7 +42,7 @@ public class PaletteActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent canvasIntent = new Intent(PaletteActivity.this, CanvasActivity.class);
-                canvasIntent.putExtra("Color List", myList.get(i).toString());
+                canvasIntent.putExtra("Color List", myList[i]);
                 startActivity(canvasIntent);
             }
         });

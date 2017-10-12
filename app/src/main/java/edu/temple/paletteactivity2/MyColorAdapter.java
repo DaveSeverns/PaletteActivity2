@@ -16,10 +16,10 @@ import java.util.ArrayList;
 public class MyColorAdapter extends BaseAdapter {
 
     Context ctx;
-    ArrayList collection;
+    String[] collection;
 
     //constructor takes in context and data source to adapt
-    public MyColorAdapter(Context ctx, ArrayList collection){
+    public MyColorAdapter(Context ctx, String[] collection){
         this.ctx = ctx;
         this.collection = collection;
 
@@ -28,12 +28,12 @@ public class MyColorAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return collection.size();
+        return collection.length;
     }
 
     @Override
     public Object getItem(int i) {
-        return collection.get(i);
+        return collection[i];
     }
 
     @Override
@@ -45,8 +45,8 @@ public class MyColorAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         TextView textView = new TextView(ctx);
-        textView.setText(collection.get(i).toString());
-        textView.setBackgroundColor(Color.parseColor(collection.get(i).toString()));
+        textView.setText(collection[i].toString());
+        textView.setBackgroundColor(Color.parseColor(collection[i].toString()));
         textView.setTextSize(28);
         return textView;
     }
