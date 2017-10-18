@@ -38,9 +38,11 @@ public class PaletteActivity extends Activity implements PaletteFragment.Palette
     @Override
     public void changeColor(String color){
 
-        canvas.changeBackGroundToColor(color);
 
-        fm.beginTransaction().replace(R.id.palette_fragment,canvas).commit();
+
+        fm.beginTransaction().replace(R.id.paletteFrame,canvas).commit();
+        fm.executePendingTransactions();
+        canvas.changeBackGroundToColor(color);
 
     }
 }
