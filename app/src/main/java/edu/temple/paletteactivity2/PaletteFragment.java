@@ -17,7 +17,8 @@ import android.widget.GridView;
  */
 public class PaletteFragment extends Fragment {
 
-    View v;
+    PaletteInterface parent;
+    GridView colorGrid;
 
     public PaletteFragment() {
         // Required empty public constructor
@@ -28,18 +29,33 @@ public class PaletteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        Resources res = this.getResources();
-        final String[] myList = res.getStringArray(R.array.color_array);
-        final String[] colorList = res.getStringArray(R.array.parse_color_array);
+        View view = inflater.inflate(R.layout.fragment_palette, container, false);
+        //associate grid view
+        //get grid view in fragment layout file and associate it with view
+        final GridView paletteGrid = (GridView) view.findViewById(R.id.fragmentColorGrid);
+        //get the resources associated at the activity level
+        Resources res = getActivity().getResources();
+        //get array resource for text based on language
+        String[] colorText = res.getStringArray(R.array.color_array);
+        //get the array that is always the english or parseable copy
+        final String[] colorsToParse = res.getStringArray(R.array.parse_color_array);
+        MyColorAdapter adapter = new MyColorAdapter(getActivity(),colorText, colorsToParse);
 
-        MyColorAdapter colorAdapter = new MyColorAdapter(getActivity(), myList,colorList);
+        //set the color adapter for the grid view
+        paletteGrid.setAdapter(adapter);
 
-        GridView gridView = (GridView) getView().findViewById(R.id.colorGrid);
-        gridView.setAdapter(colorAdapter);
+        paletteGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                parent.changeColor(colorsToParse[i]);
+            }
+        });
 
+        return view;
+    }
 
-
-        return inflater.inflate(R.layout.fragment_palette, container, false);
+    public interface PaletteInterface{
+        public void changeColor(String color);
     }
 
 }

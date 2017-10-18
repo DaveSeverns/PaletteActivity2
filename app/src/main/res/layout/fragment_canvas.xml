@@ -2,12 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.temple.paletteactivity2.PaletteFragment">
+    tools:context="edu.temple.paletteactivity2.CanvasFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
-    <GridView
-        android:id="@+id/fragmentColorGrid"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
+
 </FrameLayout>

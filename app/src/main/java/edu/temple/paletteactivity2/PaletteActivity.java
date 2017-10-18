@@ -18,45 +18,52 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class PaletteActivity extends Activity {
+public class PaletteActivity extends Activity implements PaletteFragment.PaletteInterface {
 
+    FragmentManager fm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_palette);
 
-        FragmentManager fm = getFragmentManager();
+        fm = getFragmentManager();
         Fragment paletteFragment = new PaletteFragment();
 
         fm.beginTransaction().add(R.id.palette_fragment,paletteFragment).commit();
-      //  Spinner mySpinner;
 
-        //final ConstraintLayout myLayout;
-        //myLayout = (ConstraintLayout)findViewById(R.id.myLayout);
+    }
 
-       /** Resources res = this.getResources();
-        final String[] myList = res.getStringArray(R.array.color_array);
-        final String[] colorList = res.getStringArray(R.array.parse_color_array);
-        **/
+    @Override
+    public void changeColor(String color){
 
-        //String locale = Locale.getDefault().toString();
-
-        //instantiate my custom adapter
-        //MyColorAdapter colorAdapter = new MyColorAdapter(this, myList,colorList);
-
-        //mySpinner = (Spinner) findViewById(R.id.spinner);
-       // mySpinner.setAdapter(colorAdapter);
-
-        //GridView gridView = (GridView) findViewById(R.id.myGridView);
-        //gridView.setAdapter(colorAdapter);
-
-        /**gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent canvasIntent = new Intent(PaletteActivity.this, CanvasActivity.class);
-                canvasIntent.putExtra("Color List", colorList[i]);
-                startActivity(canvasIntent);
-            }
-        });**/
     }
 }
+//  Spinner mySpinner;
+
+//final ConstraintLayout myLayout;
+//myLayout = (ConstraintLayout)findViewById(R.id.myLayout);
+
+/** Resources res = this.getResources();
+ final String[] myList = res.getStringArray(R.array.color_array);
+ final String[] colorList = res.getStringArray(R.array.parse_color_array);
+ **/
+
+//String locale = Locale.getDefault().toString();
+
+//instantiate my custom adapter
+//MyColorAdapter colorAdapter = new MyColorAdapter(this, myList,colorList);
+
+//mySpinner = (Spinner) findViewById(R.id.spinner);
+// mySpinner.setAdapter(colorAdapter);
+
+//GridView gridView = (GridView) findViewById(R.id.myGridView);
+//gridView.setAdapter(colorAdapter);
+
+/**gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+@Override
+public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+Intent canvasIntent = new Intent(PaletteActivity.this, CanvasActivity.class);
+canvasIntent.putExtra("Color List", colorList[i]);
+startActivity(canvasIntent);
+}
+});**/
