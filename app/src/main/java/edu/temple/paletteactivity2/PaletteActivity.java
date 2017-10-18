@@ -21,6 +21,7 @@ import java.util.Locale;
 public class PaletteActivity extends Activity implements PaletteFragment.PaletteInterface {
 
     FragmentManager fm;
+    CanvasFragment canvas;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,13 +29,18 @@ public class PaletteActivity extends Activity implements PaletteFragment.Palette
 
         fm = getFragmentManager();
         Fragment paletteFragment = new PaletteFragment();
+        canvas = new CanvasFragment();
 
-        fm.beginTransaction().add(R.id.palette_fragment,paletteFragment).commit();
+        fm.beginTransaction().add(R.id.paletteFrame,paletteFragment).commit();
 
     }
 
     @Override
     public void changeColor(String color){
+
+        canvas.changeBackGroundToColor(color);
+
+        fm.beginTransaction().replace(R.id.palette_fragment,canvas).commit();
 
     }
 }

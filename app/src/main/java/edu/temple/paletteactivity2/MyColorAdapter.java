@@ -53,7 +53,7 @@ public class MyColorAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         TextView textView = new TextView(ctx);
-        Resources colorRes = ctx.getResources();
+        //Resources colorRes = ctx.getResources();
 
         textView.setText(collection[i]);
 
