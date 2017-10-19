@@ -27,51 +27,31 @@ public class PaletteActivity extends Activity implements PaletteFragment.Palette
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_palette);
 
+
         fm = getFragmentManager();
         Fragment paletteFragment = new PaletteFragment();
         canvas = new CanvasFragment();
 
+        //add fragment to the given frame in activity layout
         fm.beginTransaction().add(R.id.paletteFrame,paletteFragment).commit();
 
     }
 
+    /*
+    * Overriding the method from the palette fragment when the parent is called to do this method in the
+    * fragments on item clicked will call this method which will then begin transaction to replace the palette
+    * fragment with th canvas fragment and use the canvas fragments public method to change the background of the
+    * canvasFrame and replace the palette GridView
+    * */
     @Override
     public void changeColor(String color){
-
-
-
-        fm.beginTransaction().replace(R.id.paletteFrame,canvas).commit();
+        // begin transaction, replace instead of add to replace the palette with the canvas fragment
+        //addToBackStack will allow us to "undo" and go back to previous state, ie from canvas back to palette
+        //instace of the fragment being removed saved to back stack
+        fm.beginTransaction().replace(R.id.paletteFrame,canvas).addToBackStack(null).commit();
+        //immediately execute the requested commit to load new fragment sooner
         fm.executePendingTransactions();
         canvas.changeBackGroundToColor(color);
 
     }
 }
-//  Spinner mySpinner;
-
-//final ConstraintLayout myLayout;
-//myLayout = (ConstraintLayout)findViewById(R.id.myLayout);
-
-/** Resources res = this.getResources();
- final String[] myList = res.getStringArray(R.array.color_array);
- final String[] colorList = res.getStringArray(R.array.parse_color_array);
- **/
-
-//String locale = Locale.getDefault().toString();
-
-//instantiate my custom adapter
-//MyColorAdapter colorAdapter = new MyColorAdapter(this, myList,colorList);
-
-//mySpinner = (Spinner) findViewById(R.id.spinner);
-// mySpinner.setAdapter(colorAdapter);
-
-//GridView gridView = (GridView) findViewById(R.id.myGridView);
-//gridView.setAdapter(colorAdapter);
-
-/**gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-@Override
-public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-Intent canvasIntent = new Intent(PaletteActivity.this, CanvasActivity.class);
-canvasIntent.putExtra("Color List", colorList[i]);
-startActivity(canvasIntent);
-}
-});**/
