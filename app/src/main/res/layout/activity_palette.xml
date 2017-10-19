@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
 
-    android:id="@+id/myLayout"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.temple.paletteactivity2.PaletteActivity">
+    tools:context="edu.temple.paletteactivity2.PaletteActivity"
+    android:weightSum="1">
 
     <FrameLayout
         android:id="@+id/paletteFrame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight=".7">
+
 
     </FrameLayout>
 
+    <FrameLayout
+        android:id="@+id/canvasFrame"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".3">
+    </FrameLayout>
 
-</android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

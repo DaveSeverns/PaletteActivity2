@@ -34,6 +34,7 @@ public class PaletteActivity extends Activity implements PaletteFragment.Palette
 
         //add fragment to the given frame in activity layout
         fm.beginTransaction().add(R.id.paletteFrame,paletteFragment).commit();
+        fm.beginTransaction().add(R.id.canvasFrame,canvas).commit();
 
     }
 
@@ -45,13 +46,14 @@ public class PaletteActivity extends Activity implements PaletteFragment.Palette
     * */
     @Override
     public void changeColor(String color){
+        canvas.changeBackGroundToColor(color);
+
         // begin transaction, replace instead of add to replace the palette with the canvas fragment
         //addToBackStack will allow us to "undo" and go back to previous state, ie from canvas back to palette
         //instace of the fragment being removed saved to back stack
-        fm.beginTransaction().replace(R.id.paletteFrame,canvas).addToBackStack(null).commit();
+
         //immediately execute the requested commit to load new fragment sooner
         fm.executePendingTransactions();
-        canvas.changeBackGroundToColor(color);
 
     }
 }
