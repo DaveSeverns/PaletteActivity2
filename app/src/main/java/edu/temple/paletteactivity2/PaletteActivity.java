@@ -22,6 +22,7 @@ public class PaletteActivity extends Activity implements PaletteFragment.Palette
 
     FragmentManager fm;
     CanvasFragment canvas;
+    boolean twoPainz;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
