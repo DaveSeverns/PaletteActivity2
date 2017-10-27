@@ -56,6 +56,7 @@ public class MyColorAdapter extends BaseAdapter {
         //Resources colorRes = ctx.getResources();
 
         textView.setText(collection[i]);
+        textView.setTextColor(Color.GRAY);
 
         textView.setBackgroundColor(Color.parseColor(colors[i]));
         textView.setTextSize(28);
